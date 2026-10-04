@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl rounded-xl bg-[#222222] px-5 shadow-lg">
         <header className="flex h-14 items-center justify-between">
 
-          {/* Logo */}
+        
           <Link href="/" className="text-2xl font-bold">
             <span className="text-[#1683ff]">hire</span>
             <span className="text-white">l</span>
@@ -33,6 +33,13 @@ const Navbar = () => {
               className="text-sm text-gray-300 transition-colors hover:text-white"
             >
               Company
+            </Link>
+
+            <Link
+              href="/pricing"
+              className="text-sm text-gray-300 transition-colors hover:text-white"
+            >
+              Pricing
             </Link>
 
             <Link
