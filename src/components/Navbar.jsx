@@ -2,9 +2,20 @@
 
 import { useState } from "react";
 import { Link, Button } from "@heroui/react";
+import { signOut, useSession } from "@/lib/auth-client";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+;
+  const {data: session,  isPending} = useSession()
+  // console.log("session data : " , session, "isPending" , isPending)
+
+  const user = session?.user
+  console.log(user)
+
+  const handleSignOut = async()=>{
+    await signOut();
+  }
 
   return (
     <nav className="sticky top-0 z-50 w-full px-2 py-2">
@@ -51,12 +62,20 @@ const Navbar = () => {
 
             <div className="h-5 w-px bg-gray-600" />
 
-            <Link
+            {
+              user ? <>
+             <h3>Hi , {user.name} !</h3>
+             <Button onClick={handleSignOut} variant="ghost"> Sign Out</Button>
+             
+             </> 
+             :
+             
+             <Link
               href="/auth/signin"
               className="text-sm text-indigo-400 transition-colors hover:text-indigo-300"
             >
               Sign In
-            </Link>
+            </Link>}
 
             <Button
               as={Link}
@@ -136,17 +155,29 @@ const Navbar = () => {
 
               <div className="my-2 h-px bg-gray-700" />
 
-              <Link
+             { user ?   <>
+             <h3>Hi , {user.name}!</h3>
+             <Button onClick={handleSignOut} variant="ghost"> Sign Out</Button>
+             
+             </>
+             
+            
+             
+             :  
+             
+             <Link
                 href="/auth/login"
                 onClick={() => setIsMenuOpen(false)}
                 className="rounded-lg px-3 py-3 text-sm text-indigo-400 hover:bg-gray-800"
               >
                 Sign In
               </Link>
+              
+              }
 
               <Button
                 as={Link}
-                href="/auth/register"
+                href="/auth/signup"
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-2 w-full rounded-lg bg-indigo-500 text-white hover:bg-indigo-600"
               >
