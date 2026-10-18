@@ -119,7 +119,7 @@ export default function SignUpPage() {
               Full Name
             </Label>
             <div className="relative">
-              <UserRound className="absolute left-3 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-zinc-400" />
+             
               <Input
                 name="name"
                 type="text"
@@ -128,7 +128,7 @@ export default function SignUpPage() {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full"
-                isRequired
+                
               />
             </div>
           </TextField>
@@ -139,7 +139,7 @@ export default function SignUpPage() {
               Email Address
             </Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-zinc-400" />
+              
               <Input
                 name="email"
                 type="email"
@@ -148,7 +148,7 @@ export default function SignUpPage() {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full"
-                isRequired
+                
               />
             </div>
           </TextField>
@@ -159,7 +159,7 @@ export default function SignUpPage() {
               Password
             </Label>
             <div className="relative">
-              <LockKeyhole className="absolute left-3 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-zinc-400" />
+        
               <Input
                 name="password"
                 type={showPassword ? "text" : "password"}
@@ -168,7 +168,7 @@ export default function SignUpPage() {
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full"
-                isRequired
+              
               />
               <button
                 type="button"
@@ -186,7 +186,6 @@ export default function SignUpPage() {
               Confirm Password
             </Label>
             <div className="relative">
-              <LockKeyhole className="absolute left-3 top-1/2 z-10 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <Input
                 name="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
@@ -195,7 +194,7 @@ export default function SignUpPage() {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 className="w-full"
-                isRequired
+             
               />
               <button
                 type="button"
@@ -230,7 +229,7 @@ export default function SignUpPage() {
         <p className="mt-6 text-center text-sm text-zinc-500">
           Already have an account?{" "}
           <Link
-            href="/sign-in"
+            href="/auth/signin"
             className="font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
           >
             Sign in

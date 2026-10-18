@@ -52,7 +52,7 @@ const Navbar = () => {
             <div className="h-5 w-px bg-gray-600" />
 
             <Link
-              href="/auth/login"
+              href="/auth/signin"
               className="text-sm text-indigo-400 transition-colors hover:text-indigo-300"
             >
               Sign In
