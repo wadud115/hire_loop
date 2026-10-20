@@ -1,9 +1,14 @@
+"use client"
+
+
 import {
   BriefcaseBusiness,
   Building2,
   UsersRound,
   Star,
 } from "lucide-react";
+
+import { motion } from "motion/react"
 
 const stats = [
   {
@@ -70,6 +75,9 @@ const ImpactSection = () => {
             We are on a mission to connect talented people with great
             opportunities around the world.
           </p>
+
+          <motion.p animate={{ rotate: 360 }}>Remote jobs</motion.p>
+          <motion.p initial={{scale:0}} animate={{ scale: 1 }}> On site jobs jobs</motion.p>
         </div>
 
         {/* Stats */}
