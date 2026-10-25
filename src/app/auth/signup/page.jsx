@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button, Input, Label, TextField } from "@heroui/react";
 import { Eye, EyeOff, UserRound, Mail, LockKeyhole } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import {Description,  Radio, RadioGroup} from "@heroui/react";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -15,6 +16,8 @@ export default function SignUpPage() {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "seeker",
+  
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -22,6 +25,7 @@ export default function SignUpPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,7 +38,7 @@ export default function SignUpPage() {
     setError("");
     setSuccess("");
 
-    const { name, email, password, confirmPassword } = formData;
+    const { name, email, password, confirmPassword , role} = formData;
 
     if (!name.trim() || !email.trim() || !password || !confirmPassword) {
       setError("Please fill in all fields.");
@@ -58,6 +62,8 @@ export default function SignUpPage() {
         name: name.trim(),
         email: email.trim(),
         password,
+        role,
+        callbackURL : "/auth/signin"
       });
 
       if (authError) {
@@ -152,6 +158,40 @@ export default function SignUpPage() {
               />
             </div>
           </TextField>
+
+     <div className="flex flex-col gap-4">
+  <Label>Role</Label>
+
+  <RadioGroup
+    name="role"
+    value={formData.role}
+    onChange={(value) =>
+      setFormData((prev) => ({
+        ...prev,
+        role: value,
+      }))
+    }
+    orientation="horizontal"
+  >
+    <Radio value="seeker">
+      <Radio.Content>
+        <Radio.Control>
+          <Radio.Indicator />
+        </Radio.Control>
+        Job Seeker
+      </Radio.Content>
+    </Radio>
+
+    <Radio value="recruiter">
+      <Radio.Content>
+        <Radio.Control>
+          <Radio.Indicator />
+        </Radio.Control>
+        Recruiter
+      </Radio.Content>
+    </Radio>
+  </RadioGroup>
+</div>
 
        
           <TextField className="w-full">
