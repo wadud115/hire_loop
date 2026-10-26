@@ -30,7 +30,7 @@ const iconMap = {
 
 export default function DashboardStats({ stats = [] }) {
   return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid grid-cols-1 p-5 gap-5 sm:grid-cols-2 xl:grid-cols-4">
       {stats.map((stat) => {
         const Icon =
           typeof stat.icon === "string"
